@@ -1,0 +1,12 @@
+{
+  "[postgres]": {
+    "requires": {
+      "db": {
+        "credentials": {
+          "password": "EuCreio2024!"
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,54 @@
+### Endpoint sem Draft (recomendado para o app freestyle)
+
+GET http://localhost:4004/odata/v4/service/cap-nodraft/Customers
+###
+
+GET http://localhost:4004/odata/v4/service/cap-nodraft/Products
+###
+
+POST http://localhost:4004/odata/v4/service/cap-nodraft/Customers
+Content-Type: application/json
+
+{
+  "name": "Cliente Exemplo",
+  "contact": "contato@exemplo.com",
+  "email": "cliente@exemplo.com"
+}
+###
+
+POST http://localhost:4004/odata/v4/service/cap-nodraft/Products
+Content-Type: application/json
+
+{
+  "name": "Produto Exemplo",
+  "description": "Descrição do produto",
+  "price": 10.5,
+  "stock": 3
+}
+###
+
+PATCH http://localhost:4004/odata/v4/service/cap-nodraft/Customers(ID={{CUSTOMER_ID}})
+Content-Type: application/json
+
+{
+  "name": "Cliente Atualizado"
+}
+###
+
+DELETE http://localhost:4004/odata/v4/service/cap-nodraft/Customers(ID={{CUSTOMER_ID}})
+###
+
+PATCH http://localhost:4004/odata/v4/service/cap-nodraft/Products(ID={{PRODUCT_ID}})
+Content-Type: application/json
+
+{
+  "description": "Nova descrição"
+}
+###
+
+DELETE http://localhost:4004/odata/v4/service/cap-nodraft/Products(ID={{PRODUCT_ID}})
+
+
+
+
+

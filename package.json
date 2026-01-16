@@ -1,0 +1,67 @@
+{
+  "name": "cap_service",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/postgres": "^1.14.2",
+    "@sap/cds": "^8",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "UI5-1.129"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-btp_ui_cap": "cds watch --open btp_ui_cap/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-btp_ui_customer": "cds watch --open btp_ui_customer/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-postgres-btp_ui_cap": "cds watch --profile postgres --open btp_ui_cap/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-postgres-btp_ui_customer": "cds watch --profile postgres --open btp_ui_customer/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "postgres",
+        "credentials": {
+          "host": "localhost",
+          "port": 5432,
+          "database": "cap_management",
+          "user": "postgres",
+          "connectionTimeoutMillis": 3000
+        }
+      }
+    },
+    "[sqlite]": {
+      "requires": {
+        "db": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": "db/cap-management.sqlite"
+          }
+        }
+      }
+    },
+    "[postgres]": {
+      "requires": {
+        "db": {
+          "kind": "postgres",
+          "credentials": {
+            "host": "localhost",
+            "port": 5432,
+            "database": "cap_management",
+            "user": "postgres",
+            "connectionTimeoutMillis": 3000
+          }
+        }
+      }
+    }
+  },
+  "sapux": [
+    "app/btp_ui_cap",
+    "app/btp_ui_customer"
+  ]
+}

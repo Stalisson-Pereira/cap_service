@@ -1,0 +1,4 @@
+ID,name,description,price,customers_ID,stock,createdAt,createdBy,modifiedAt,modifiedBy
+20466921-7d57-4e76-b14c-e53fd97dcb12,Notebook Vaio,Sony 12GB 1T SSD NVMe,,20466921-7d57-4e76-b14c-e53fd97dcb11,10000,2024-10-20T00:00:00.000Z,max.mustermann@muster.com,
+20466922-7d57-4e76-b14c-e53fd97dcb12,Headset Pro 15,Sony,,20466921-7d57-4e76-b14c-e53fd97dcb12,15000,2024-10-20T00:00:00.000Z,max.mustermann@muster.com,
+20466922-7d57-4e76-b14c-e53fd97dcb13,Macbook Pro,Apple Shipset A18 12GB 2T,,20466921-7d57-4e76-b14c-e53fd97dcb13,20000,2024-10-20T00:00:00.000Z,max.mustermann@muster.com,

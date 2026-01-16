@@ -1,0 +1,148 @@
+<mvc:View controllerName="btpuicustomer.controller.Customer"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <ObjectHeader title="Manage Customers and Products" />
+
+        <IconTabBar>
+            <items>
+
+                <!-- Aba de Customers -->
+                <IconTabFilter text="Customers" key="customers" icon="sap-icon://customer-and-contacts">
+                    <SearchField placeholder="Search customer" width="30%" search="onSearchCustomer" />
+                    
+                    <content>
+                        <Toolbar>
+                            <Button text="Register Customer" press="onRegisterCustomer" type="Emphasized" />
+                            <ToolbarSpacer />
+                            <Button text="Edit" press="onEditCustomer" enabled="{uiModel>/customerSelected}" />
+                            <Button text="Delete" press="onDeleteCustomer" enabled="{uiModel>/customerSelected}" type="Negative" />
+                        </Toolbar>
+
+                        <Dialog id="idDialogCustomer" title="Register Customer">
+                            <content>
+                                <VBox>
+                                    <Label text="Name:" />
+                                    <Input id="idInputCustomerName" placeholder="Customer name" value="{inputModel>/newCustomer/name}" />
+                                    
+                                    <Label text="Contact:" />
+                                    <Input id="idInputCustomerContact" placeholder="Customer contact" value="{inputModel>/newCustomer/contact}" />
+                                    
+                                    <Label text="Email:" />
+                                    <Input id="idInputCustomerEmail" placeholder="Customer email" value="{inputModel>/newCustomer/email}" />
+                                </VBox>
+                            </content>
+                            <beginButton>
+                                <Button text="Save" press="onSaveDialogCustomer" />
+                            </beginButton>
+                            <endButton>
+                                <Button text="Cancel" press="onCloseDialogCustomer" />
+                            </endButton>
+                        </Dialog>
+
+                        <Table id="idTableCustomers" items="{path:'/Customers', parameters:{ $$updateGroupId:'customerGroup' }}" mode="SingleSelectLeft" selectionChange="onCustomerSelectionChange">
+                            <columns>
+                                <!-- Name -->
+                                <Column>
+                                    <Text text="Name" />
+                                </Column>
+                                <!-- Contato-->
+                                <Column>
+                                    <Text text="Contact" />
+                                </Column>
+                                <!-- Email-->
+                                <Column>
+                                    <Text text="Email" />
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <!-- 1ª Coluna Name-->
+                                        <Text text="{name}" />
+                                        <!-- 2ª Coluna Contato-->
+                                        <Text text="{contact}" />
+                                        <!-- 3ª Coluna Email-->
+                                        <Text text="{email}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </IconTabFilter>
+
+                <!-- Aba de Products -->
+                <IconTabFilter text="Products" key="products" icon="sap-icon://product">
+                    <SearchField placeholder="Search product" width="30%" search="onSearchProduct" />
+                    
+                    <content>
+                        <Toolbar>
+                            <Button text="Register Product" press="onRegisterProduct" type="Emphasized" />
+                            <ToolbarSpacer />
+                            <Button text="Edit" press="onEditProduct" enabled="{uiModel>/productSelected}" />
+                            <Button text="Delete" press="onDeleteProduct" enabled="{uiModel>/productSelected}" type="Negative" />
+                        </Toolbar>
+
+                        <Dialog id="idDialogProduct" title="Register Product">
+                            <content>
+                                <VBox>
+                                    <Label text="Name:" />
+                                    <Input id="idInputProductName" placeholder="Product name" value="{inputModel>/newProduct/name}" />
+                                    
+                                    <Label text="Description:" />
+                                    <Input id="idInputProductDesc" placeholder="Product description" value="{inputModel>/newProduct/description}" />
+                                    
+                                    <Label text="Price:" />
+                                    <Input id="idInputProductPrice" placeholder="Product price" type="Number" value="{inputModel>/newProduct/price}" />
+                                    
+                                    <Label text="Quantity:" />
+                                    <Input id="idInputProductQuant" placeholder="Product quantity" type="Number" value="{inputModel>/newProduct/stock}" />
+                                </VBox>
+                            </content>
+                            <beginButton>
+                                <Button text="Save" press="onSaveDialogProduct" />
+                            </beginButton>
+                            <endButton>
+                                <Button text="Cancel" press="onCloseDialogProduct" />
+                            </endButton>
+                        </Dialog>
+
+                        <Table id="idTableProducts" items="{path:'/Products', parameters:{ $$updateGroupId:'productGroup' }}" mode="SingleSelectLeft" selectionChange="onProductSelectionChange">
+                            <columns>
+                                <Column>
+                                    <Text text="Name" />
+                                </Column>
+                                <Column>
+                                    <Text text="Description" />
+                                </Column>
+                                <Column>
+                                    <Text text="Price" />
+                                </Column>
+                                <Column>
+                                    <Text text="Stock" />
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <!-- 1ª Coluna Nome-->
+                                        <Text text="{name}" />
+                                        <!-- 2ª Coluna Descrição-->
+                                        <Text text="{description}" />
+                                        <!-- 3ª Coluna Preço-->
+                                        <Text text="{price}" />
+                                        <!-- 4ª Coluna Quantidade-->
+                                        <Text text="{stock}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </IconTabFilter>
+
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>
