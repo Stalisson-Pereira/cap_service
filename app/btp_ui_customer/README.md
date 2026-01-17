@@ -19,9 +19,9 @@
 
 ## Demo
 
-<p align="center">
-  <img src="../../docs/demo.gif" alt="Demo do projeto" width="100%" />
-</p>
+![Demo do projeto](../../docs/demo.gif)
+
+Se não carregar, abra direto: [docs/demo.gif](../../docs/demo.gif)
 
 ## btp_ui_customer
 
@@ -36,4 +36,3 @@ http://localhost:4004/btp_ui_customer/webapp/index.html
 #### Pre-requisites:
 
 1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
-
