@@ -31,6 +31,8 @@ mta_archives/
 *.log
 .env
 .env.*
+/.vercel/
+/vercel.json
 
 *.iml
 *.flattened-pom.xml
