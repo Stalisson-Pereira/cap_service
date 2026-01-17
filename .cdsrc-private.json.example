@@ -3,10 +3,9 @@
     "requires": {
       "db": {
         "credentials": {
-          "password": "EuCreio2024!"
+          "password": "CHANGE_ME"
         }
       }
     }
   }
 }
-

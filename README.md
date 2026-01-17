@@ -1,5 +1,9 @@
 # Primeiros Passos
 
+## Demo
+
+![Demo do projeto](docs/demo.gif)
+
 Bem-vindo ao meu novo projeto.
 
 Ele contém as seguintes pastas e arquivos, seguindo o layout de projeto recomendado:

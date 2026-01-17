@@ -3,6 +3,7 @@ _out
 *.db
 *.sqlite
 *.sqlite*
+\[object Object\]
 cap_management
 cap_management-*
 connection.properties

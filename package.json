@@ -17,10 +17,10 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-btp_ui_cap": "cds watch --open btp_ui_cap/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-btp_ui_customer": "cds watch --open btp_ui_customer/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-postgres-btp_ui_cap": "cds watch --profile postgres --open btp_ui_cap/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-postgres-btp_ui_customer": "cds watch --profile postgres --open btp_ui_customer/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-btp_ui_cap": "cds watch --profile postgres --open btp_ui_cap/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-btp_ui_customer": "cds watch --profile postgres --open btp_ui_customer/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-sqlite-btp_ui_cap": "cds watch --profile sqlite --open btp_ui_cap/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-sqlite-btp_ui_customer": "cds watch --profile sqlite --open btp_ui_customer/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {

@@ -27,8 +27,10 @@ npx cds deploy '*' --profile sqlite
 
 2) Subir o servidor e abrir o app:
 ```bash
-npm run watch-btp_ui_customer
+npm run watch-sqlite-btp_ui_customer
 ```
+
+Obs.: os dados ficam no arquivo `db/cap-management.sqlite`. Eles persistem entre reinícios, mas se você rodar `cds deploy` de novo (com seed), seus dados criados manualmente podem ser sobrescritos pelos CSV de `db/data`.
 
 ## Rodar com Postgres
 1) Garanta que o Postgres está rodando e que existe o banco `cap_management`.
@@ -42,13 +44,19 @@ npm run watch-btp_ui_customer
 
 3) Deploy no Postgres:
 ```bash
-npx cds deploy '*' --profile postgres
+npx cds deploy '*' --to postgres --profile postgres
 ```
 
 4) Subir o servidor e abrir o app:
 ```bash
-npm run watch-postgres-btp_ui_customer
+npm run watch-btp_ui_customer
 ```
+
+Obs.: no Postgres, os dados persistem entre reinícios do servidor. Se você criar um Customer/Product pela UI, ele aparece no pgAdmin nas tabelas:
+- `cap_management_customers`
+- `cap_management_products`
+
+Evite rodar `cds deploy` a cada restart. Use deploy apenas quando mudar o modelo (schema).
 
 ## URLs úteis
 - App freestyle (Customers/Products):  
@@ -76,6 +84,9 @@ WHERE schemaname = 'public'
 ```sql
 SELECT * FROM "cap_management_Customers" ORDER BY "createdAt" DESC LIMIT 50;
 SELECT * FROM "cap_management_Products" ORDER BY "createdAt" DESC LIMIT 50;
+-- ou, sem aspas (recomendado):
+SELECT * FROM cap_management_customers ORDER BY createdat DESC LIMIT 50;
+SELECT * FROM cap_management_products ORDER BY createdat DESC LIMIT 50;
 ```
 
 ## Testes rápidos via HTTP
