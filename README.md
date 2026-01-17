@@ -2,6 +2,8 @@
 
 ## Demo
 
+![Screenshot do projeto](./docs/screenshot.png)
+
 ![Demo do projeto](./docs/demo.gif)
 
 Se não carregar, abra direto: [docs/demo.gif](./docs/demo.gif)

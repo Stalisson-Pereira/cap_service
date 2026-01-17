@@ -201,9 +201,7 @@ sap.ui.define([
                     return oCreatedContext.created();
                 })
                 .then(function () {
-                    const oCreatedObject = oCreatedContext.getObject();
-                    const sIdSuffix = oCreatedObject && oCreatedObject.ID ? ` (ID: ${oCreatedObject.ID})` : "";
-                    MessageToast.show(oResourceBundle.getText(oParams.successMsg) + sIdSuffix);
+                    MessageToast.show(oResourceBundle.getText(oParams.successMsg));
                     
                     // Clear form
                     this._clearForm(oParams.modelProperty);
