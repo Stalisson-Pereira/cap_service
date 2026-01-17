@@ -2,7 +2,9 @@
 
 ## Demo
 
-![Demo do projeto](docs/demo.gif)
+<p align="center">
+  <img src="docs/demo.gif" alt="Demo do projeto" width="100%" />
+</p>
 
 Bem-vindo ao meu novo projeto.
 
