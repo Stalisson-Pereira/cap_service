@@ -186,6 +186,12 @@ sap.ui.define([
             const oPayload = { ...oNewData };
             const oResourceBundle = oView.getModel("i18n").getResourceBundle();
 
+            const sValidationError = this._validatePayload(oParams.modelProperty, oPayload, oResourceBundle);
+            if (sValidationError) {
+                MessageBox.error(sValidationError);
+                return;
+            }
+
             if (oParams.modelProperty === "newProduct") {
                 this._normalizeProductPayload(oPayload);
             }
@@ -219,8 +225,9 @@ sap.ui.define([
                         console.warn(oResourceBundle.getText("dialogNotFound"));
                     }
                 }.bind(this))
-                .catch(function () {
-                    MessageToast.show(oResourceBundle.getText(oParams.errorMsg));
+                .catch(function (oError) {
+                    const sDetails = this._getODataErrorMessage(oError);
+                    MessageBox.error(sDetails || oResourceBundle.getText(oParams.errorMsg));
                 });
         },
 
@@ -365,6 +372,52 @@ sap.ui.define([
                 const nStock = parseInt(oPayload.stock, 10);
                 oPayload.stock = Number.isFinite(nStock) ? nStock : null;
             }
+        },
+
+        _validatePayload: function (sModelProperty, oPayload, oResourceBundle) {
+            const isNonEmptyString = (v) => typeof v === "string" && v.trim().length > 0;
+
+            if (sModelProperty === "newCustomer") {
+                if (!isNonEmptyString(oPayload.name)) return "Campo obrigatório: name";
+                if (!isNonEmptyString(oPayload.contact)) return "Campo obrigatório: contact";
+                if (!isNonEmptyString(oPayload.email)) return "Campo obrigatório: email";
+                return "";
+            }
+
+            if (sModelProperty === "newProduct") {
+                if (!isNonEmptyString(oPayload.name)) return "Campo obrigatório: name";
+                if (!isNonEmptyString(oPayload.description)) return "Campo obrigatório: description";
+                if (oPayload.price === null || oPayload.price === undefined || oPayload.price === "") return "Campo obrigatório: price";
+                if (!Number.isFinite(Number(oPayload.price))) return "Campo inválido: price";
+                if (oPayload.stock === null || oPayload.stock === undefined || oPayload.stock === "") return "Campo obrigatório: stock";
+                if (!Number.isFinite(Number(oPayload.stock))) return "Campo inválido: stock";
+                return "";
+            }
+
+            return "";
+        },
+
+        _getODataErrorMessage: function (oError) {
+            const aCandidates = [];
+            if (oError?.message) aCandidates.push(oError.message);
+            if (oError?.cause?.message) aCandidates.push(oError.cause.message);
+            if (oError?.cause?.error?.message) aCandidates.push(oError.cause.error.message);
+            if (oError?.cause?.responseText) aCandidates.push(oError.cause.responseText);
+            if (oError?.responseText) aCandidates.push(oError.responseText);
+            if (oError?.cause?.response?.responseText) aCandidates.push(oError.cause.response.responseText);
+
+            for (const s of aCandidates) {
+                if (!s || typeof s !== "string") continue;
+                try {
+                    const o = JSON.parse(s);
+                    const msg = o?.error?.message || o?.message;
+                    if (typeof msg === "string" && msg.trim()) return msg.trim();
+                } catch (e) {
+                }
+                const trimmed = s.trim();
+                if (trimmed) return trimmed;
+            }
+            return "";
         },
 
         _clearForm: function(sModelProperty) {

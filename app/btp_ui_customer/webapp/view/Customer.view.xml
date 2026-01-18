@@ -23,13 +23,13 @@
                             <content>
                                 <VBox>
                                     <Label text="Name:" />
-                                    <Input id="idInputCustomerName" placeholder="Customer name" value="{inputModel>/newCustomer/name}" />
+                                    <Input id="idInputCustomerName" placeholder="Customer name" required="true" value="{inputModel>/newCustomer/name}" />
                                     
                                     <Label text="Contact:" />
-                                    <Input id="idInputCustomerContact" placeholder="Customer contact" value="{inputModel>/newCustomer/contact}" />
+                                    <Input id="idInputCustomerContact" placeholder="Customer contact" required="true" value="{inputModel>/newCustomer/contact}" />
                                     
                                     <Label text="Email:" />
-                                    <Input id="idInputCustomerEmail" placeholder="Customer email" value="{inputModel>/newCustomer/email}" />
+                                    <Input id="idInputCustomerEmail" placeholder="Customer email" required="true" value="{inputModel>/newCustomer/email}" />
                                 </VBox>
                             </content>
                             <beginButton>
@@ -88,16 +88,16 @@
                             <content>
                                 <VBox>
                                     <Label text="Name:" />
-                                    <Input id="idInputProductName" placeholder="Product name" value="{inputModel>/newProduct/name}" />
+                                    <Input id="idInputProductName" placeholder="Product name" required="true" value="{inputModel>/newProduct/name}" />
                                     
                                     <Label text="Description:" />
-                                    <Input id="idInputProductDesc" placeholder="Product description" value="{inputModel>/newProduct/description}" />
+                                    <Input id="idInputProductDesc" placeholder="Product description" required="true" value="{inputModel>/newProduct/description}" />
                                     
                                     <Label text="Price:" />
-                                    <Input id="idInputProductPrice" placeholder="Product price" type="Number" value="{inputModel>/newProduct/price}" />
+                                    <Input id="idInputProductPrice" placeholder="Product price" required="true" type="Number" value="{inputModel>/newProduct/price}" />
                                     
                                     <Label text="Quantity:" />
-                                    <Input id="idInputProductQuant" placeholder="Product quantity" type="Number" value="{inputModel>/newProduct/stock}" />
+                                    <Input id="idInputProductQuant" placeholder="Product quantity" required="true" type="Number" value="{inputModel>/newProduct/stock}" />
                                 </VBox>
                             </content>
                             <beginButton>
